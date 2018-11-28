@@ -25,6 +25,14 @@ class HomeScreen extends React.Component {
           title="Go to Scroll"
           onPress={() => navigate('Scroll')}
         />
+        <Button
+          title="Go to FlatList"
+          onPress={() => navigate('FlatList')}
+        />
+        <Button
+          title="Go to SectionList"
+          onPress={() => navigate('SectionList')}
+        />
       </View>
     );
   }
