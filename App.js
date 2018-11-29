@@ -1,31 +1,23 @@
 import React from 'react';
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import HomeScreen from './pages/Home';
-import PizzaScreen from './pages/Pizza';
-import ButtonScreen from './pages/Button';
-import ScrollScreen from './pages/Scroll';
-import FlatListScreen from './pages/FlatList';
-import SectionListScreen from './pages/SectionList';
+import { Provider, connect } from 'react-redux';
+import {applyMiddleware, createStore} from 'redux';
+import reduxThunk from 'redux-thunk';
+import AppNavigator from './Stack';
+import reducer from './reducer';
 
-const AppNavigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen
-  },
-  Pizza: {
-    screen: PizzaScreen
-  },
-  Button: {
-    screen: ButtonScreen
-  },
-  Scroll: {
-    screen: ScrollScreen
-  },
-  FlatList: {
-    screen: FlatListScreen
-  },
-  SectionList: {
-    screen: SectionListScreen
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+
+const store = createStoreWithMiddleware(reducer);
+
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    );
   }
-});
+}
 
-export default createAppContainer(AppNavigator);
+
+export default App;
