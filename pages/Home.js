@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import NavList from '../_navigation/List';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -13,26 +14,7 @@ class HomeScreen extends React.Component {
         <Text>Test!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
-        <Button
-          title="Go to Pizza"
-          onPress={() => navigate('Pizza')}
-        />
-        <Button
-          title="Go to Button"
-          onPress={() => navigate('Button')}
-        />
-        <Button
-          title="Go to Scroll"
-          onPress={() => navigate('Scroll')}
-        />
-        <Button
-          title="Go to FlatList"
-          onPress={() => navigate('FlatList')}
-        />
-        <Button
-          title="Go to SectionList"
-          onPress={() => navigate('SectionList')}
-        />
+        <NavList navigate = {navigate} />
       </View>
     );
   }
